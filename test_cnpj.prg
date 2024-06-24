@@ -15,14 +15,14 @@ Function test_cnpj()
     ? Replicate("*", 40)
 
     ?
-    ? "cnpj correto com mascara e sem letras"
+    ? "cnpj correto com mascara e com letras"
     cCnpj := "A3.170.7X3/0001-36"
     cCnpj_with_picture := ""
     ? ValToPrg({cCnpj, Validate_Cnpj(@cCnpj, @cCnpj_with_picture), cCnpj, cCnpj_with_picture})
     ? Replicate("*", 40)
 
     ?
-    ? "cnpj correto sem mascara e sem letras"
+    ? "cnpj correto sem mascara e com letras"
     cCnpj := "A31707X3000136"
     cCnpj_with_picture := ""
     ? ValToPrg({cCnpj, Validate_Cnpj(@cCnpj, @cCnpj_with_picture), cCnpj, cCnpj_with_picture})
@@ -44,14 +44,14 @@ Function test_cnpj()
     ? Replicate("*", 40)
 
     ?
-    ? "cnpj errado com mascara e sem letras"
+    ? "cnpj errado com mascara e com letras"
     cCnpj := "A3.170.7X3/0001-20"
     cCnpj_with_picture := ""
     ? ValToPrg({cCnpj, Validate_Cnpj(@cCnpj, @cCnpj_with_picture), cCnpj, cCnpj_with_picture})
     ? Replicate("*", 40)
 
     ?
-    ? "cnpj errado sem mascara e sem letras"
+    ? "cnpj errado sem mascara e com letras"
     cCnpj := "A31707X3000120"
     cCnpj_with_picture := ""
     ? ValToPrg({cCnpj, Validate_Cnpj(@cCnpj, @cCnpj_with_picture), cCnpj, cCnpj_with_picture})
@@ -59,6 +59,10 @@ Function test_cnpj()
 
 Return
 
+/*
+passar cCnpj é obrigatório mas por referencia é opcional
+passar cCnpj_with_picture é opcional
+*/
 Function Validate_Cnpj(cCnpj, cCnpj_with_picture)
 Local digitWeights := {6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2}
 Local clearedCNPJ
