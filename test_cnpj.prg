@@ -61,7 +61,7 @@ Return
 
 /*
 passar cCnpj é obrigatório mas por referencia é opcional
-passar cCnpj_with_picture é opcional
+passar cCnpj_with_picture é opcional mas se passado deve ser sempre por referencia
 */
 Function Validate_Cnpj(cCnpj, cCnpj_with_picture)
 Local digitWeights := {6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2}
