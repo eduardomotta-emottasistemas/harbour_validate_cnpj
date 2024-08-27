@@ -6,6 +6,7 @@ Function test_cnpj()
     cCnpj_with_picture := ""
     ? ValToPrg({cCnpj, Validate_Cnpj(@cCnpj, @cCnpj_with_picture), cCnpj, cCnpj_with_picture})
     ? Replicate("*", 40)
+    Inkey(0)
 
     ?
     ? "cnpj correto sem mascara e sem letras"
@@ -13,6 +14,7 @@ Function test_cnpj()
     cCnpj_with_picture := ""
     ? ValToPrg({cCnpj, Validate_Cnpj(@cCnpj, @cCnpj_with_picture), cCnpj, cCnpj_with_picture})
     ? Replicate("*", 40)
+    Inkey(0)
 
     ?
     ? "cnpj correto com mascara e com letras"
@@ -20,6 +22,7 @@ Function test_cnpj()
     cCnpj_with_picture := ""
     ? ValToPrg({cCnpj, Validate_Cnpj(@cCnpj, @cCnpj_with_picture), cCnpj, cCnpj_with_picture})
     ? Replicate("*", 40)
+    Inkey(0)
 
     ?
     ? "cnpj correto sem mascara e com letras"
@@ -27,6 +30,7 @@ Function test_cnpj()
     cCnpj_with_picture := ""
     ? ValToPrg({cCnpj, Validate_Cnpj(@cCnpj, @cCnpj_with_picture), cCnpj, cCnpj_with_picture})
     ? Replicate("*", 40)
+    Inkey(0)
 
 // TESTES CNPJ COM DIGITOS ERRADOS
     ?
@@ -35,6 +39,7 @@ Function test_cnpj()
     cCnpj_with_picture := ""
     ? ValToPrg({cCnpj, Validate_Cnpj(@cCnpj, @cCnpj_with_picture), cCnpj, cCnpj_with_picture})
     ? Replicate("*", 40)
+    Inkey(0)
 
     ?
     ? "cnpj errado sem mascara e sem letras"
@@ -42,6 +47,7 @@ Function test_cnpj()
     cCnpj_with_picture := ""
     ? ValToPrg({cCnpj, Validate_Cnpj(@cCnpj, @cCnpj_with_picture), cCnpj, cCnpj_with_picture})
     ? Replicate("*", 40)
+    Inkey(0)
 
     ?
     ? "cnpj errado com mascara e com letras"
@@ -49,6 +55,7 @@ Function test_cnpj()
     cCnpj_with_picture := ""
     ? ValToPrg({cCnpj, Validate_Cnpj(@cCnpj, @cCnpj_with_picture), cCnpj, cCnpj_with_picture})
     ? Replicate("*", 40)
+    Inkey(0)
 
     ?
     ? "cnpj errado sem mascara e com letras"
@@ -56,6 +63,7 @@ Function test_cnpj()
     cCnpj_with_picture := ""
     ? ValToPrg({cCnpj, Validate_Cnpj(@cCnpj, @cCnpj_with_picture), cCnpj, cCnpj_with_picture})
     ? Replicate("*", 40)
+    Inkey(0)
 
 Return
 
@@ -84,14 +92,14 @@ If Len(formattedCNPJ) # 12
 EndIf
 
 For i := 2 to 13
-    n += ((Asc(formattedCNPJ[i - 1]) - ASC_CODE_BASE) * digitWeights[i])
+    n += ((Asc(SubStr(formattedCNPJ, i - 1, 1)) - ASC_CODE_BASE) * digitWeights[i])
 Next
 digit_13 := Str(if(Mod(n, 11) < 2, 0, 11 - Mod(n, 11)), 1)
 formattedCNPJ += digit_13
 n = 0;
 
 For i := 1 to 13
-    n += ((Asc(formattedCNPJ[i]) - ASC_CODE_BASE) * digitWeights[i])
+    n += ((Asc(SubStr(formattedCNPJ, i, 1)) - ASC_CODE_BASE) * digitWeights[i])
 Next
 digit_14 := Str(if(Mod(n, 11) < 2, 0, 11 - Mod(n, 11)), 1)
 formattedCNPJ += digit_14 
